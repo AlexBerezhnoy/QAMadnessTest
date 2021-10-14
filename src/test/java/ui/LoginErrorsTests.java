@@ -23,7 +23,7 @@ public class LoginErrorsTests extends BaseTest{
     @Severity(SeverityLevel.TRIVIAL)
     @Test
     public void emptyPasswordTest() {
-        loginPage.inputEmail("poiop");
+        loginPage.inputEmail("error");
         loginPage.inputPassword("");
         loginPage.clickSingInButton();
         loginPage.isErrorPopupDisplayingRight("Поле \"Пароль\" обязательно к заполнению.");
@@ -32,19 +32,19 @@ public class LoginErrorsTests extends BaseTest{
     @Severity(SeverityLevel.TRIVIAL)
     @Test
     public void emptyLoginTest() {
-        loginPage.inputEmail("poiop");
-        loginPage.inputPassword("poiop");
+        loginPage.inputEmail("");
+        loginPage.inputPassword("error");
         loginPage.clickSingInButton();
-        loginPage.isErrorPopupDisplayingRight("Эти учетные данные не соответствуют нашим записям.");
+        loginPage.isErrorPopupDisplayingRight("Поле \"E-mail\" обязательно к заполнению.");
     }
 
     @Severity(SeverityLevel.TRIVIAL)
     @Test
     public void incorrectDataTest() {
-        loginPage.inputEmail("");
-        loginPage.inputPassword("poiop");
+        loginPage.inputEmail("error");
+        loginPage.inputPassword("error");
         loginPage.clickSingInButton();
-        loginPage.isErrorPopupDisplayingRight("Поле \"E-mail\" обязательно к заполнению.");
+        loginPage.isErrorPopupDisplayingRight("Эти учетные данные не соответствуют нашим записям.");
     }
 }
 
